@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 560" width="1280" height="560" role="img" aria-label="Transcript dump versus handoff pack">
+  <defs>
+    <style>
+      .t   { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill:#0f172a; }
+      .m   { font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; fill:#334155; }
+      .sm  { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill:#475569; font-size:14px; }
+      .hdr { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size:17px; font-weight:700; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="560" fill="#ffffff"/>
+  <text x="640" y="46" text-anchor="middle" class="t" font-size="24" font-weight="700">Transcript dump vs. handoff pack</text>
+  <text x="640" y="74" text-anchor="middle" class="m" font-size="14">same project, two transfers, different second week</text>
+
+  <!-- LEFT: transcript -->
+  <rect x="56" y="104" width="548" height="374" fill="#fff5f5" stroke="#fecaca" stroke-width="1.5" rx="16"/>
+  <text x="88" y="146" class="hdr" fill="#9f1239">Paste the whole chat</text>
+  <text x="88" y="170" class="m" font-size="12.5" fill="#b91c1c">the default move</text>
+
+  <!-- RIGHT: pack -->
+  <rect x="676" y="104" width="548" height="374" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5" rx="16"/>
+  <text x="708" y="146" class="hdr" fill="#166534">Hand off a pack</text>
+  <text x="708" y="170" class="m" font-size="12.5" fill="#15803d">what this repo does</text>
+
+  <!-- rows: left (x mark + text) -->
+  <g>
+    <path d="M92,208 l11,11 m0,-11 l-11,11" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="118" y="220" class="sm">~100k tokens of history, if it even fits</text>
+
+    <path d="M92,258 l11,11 m0,-11 l-11,11" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="118" y="270" class="sm">Re-derives decisions — picks a rejected option</text>
+
+    <path d="M92,308 l11,11 m0,-11 l-11,11" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="118" y="320" class="sm">Guesses your tone, length, language</text>
+
+    <path d="M92,358 l11,11 m0,-11 l-11,11" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="118" y="370" class="sm">Context rot: the middle is quietly forgotten</text>
+
+    <path d="M92,408 l11,11 m0,-11 l-11,11" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="118" y="420" class="sm">Session three repeats session one</text>
+  </g>
+
+  <!-- rows: right (check + text) -->
+  <g>
+    <circle cx="718" cy="214" r="5" fill="#16a34a"/>
+    <text x="742" y="220" class="sm">≤1200 words, budgeted per section</text>
+
+    <circle cx="718" cy="267" r="5" fill="#16a34a"/>
+    <text x="742" y="270" class="sm">Rejected alternatives written down — validator enforces it</text>
+
+    <circle cx="718" cy="317" r="5" fill="#16a34a"/>
+    <text x="742" y="320" class="sm">Preferences stated as testable rules</text>
+
+    <circle cx="718" cy="367" r="5" fill="#16a34a"/>
+    <text x="742" y="370" class="sm">Playback gate catches the loss before work starts</text>
+
+    <circle cx="718" cy="417" r="5" fill="#16a34a"/>
+    <text x="742" y="420" class="sm">Session three starts at step four</text>
+  </g>
+
+  <!-- divider -->
+  <rect x="639" y="120" width="2" height="342" fill="#e2e8f0"/>
+
+  <!-- footer -->
+  <text x="640" y="512" text-anchor="middle" class="t" font-size="15" font-weight="600">The pack is not a summary of the conversation. It is the state the conversation produced.</text>
+  <text x="640" y="536" text-anchor="middle" class="m" font-size="12" fill="#64748b">— which is why 800 careful words beat 100,000 dumped ones</text>
+</svg>

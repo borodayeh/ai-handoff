@@ -1,0 +1,65 @@
+name: test-and-validate
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: tests (py${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.9', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -v
+
+  validate:
+    name: validate packs (strict)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Example packs must stay valid
+        run: |
+          python3 scripts/handoff.py validate examples/example-pack.md --strict
+          python3 scripts/handoff.py validate examples/example-pack.fa.md --strict
+      - name: Your packs
+        run: |
+          shopt -s nullglob
+          packs=(packs/*-pack.md)
+          if [ ${#packs[@]} -eq 0 ]; then
+            echo "no packs in packs/ yet, skipping"
+            exit 0
+          fi
+          fail=0
+          for p in "${packs[@]}"; do
+            echo "::group::$p"
+            python3 scripts/handoff.py validate "$p" --strict || fail=1
+            echo "::endgroup::"
+          done
+          exit $fail
+
+  link-check:
+    name: docs links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Relative links and images resolve
+        run: python3 -m unittest tests.test_docs -v

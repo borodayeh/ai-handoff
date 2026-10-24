@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 620" width="1280" height="620" role="img" aria-label="The three moves: EXTRACT, BOOT, CHECKPOINT">
+  <defs>
+    <style>
+      .t  { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill:#0f172a; }
+      .m  { font-family: "SF Mono", ui-monospace, Menlo, Consolas, monospace; fill:#334155; }
+      .lbl{ font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; fill:#64748b; font-size:13px; letter-spacing:.08em; font-weight:700; }
+      .card { fill:#ffffff; stroke:#cbd5e1; stroke-width:1.5; rx:14; }
+      .soft { fill:#f8fafc; stroke:#e2e8f0; stroke-width:1.5; rx:12; }
+      .accent { fill:#fff1f2; stroke:#fecdd3; stroke-width:1.5; rx:12; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="620" fill="#fff"/>
+
+  <text x="640" y="46" text-anchor="middle" class="t" font-size="24" font-weight="700">ai-handoff — the three moves</text>
+  <text x="640" y="74" text-anchor="middle" class="m" font-size="14">one pack, one gate, no transcript</text>
+
+  <!-- lane 1: EXTRACT -->
+  <text x="60" y="122" class="lbl">1 · EXTRACT</text>
+  <rect x="60" y="136" width="330" height="196" class="card"/>
+  <text x="84" y="172" class="t" font-size="17" font-weight="700">Old model</text>
+  <text x="84" y="198" class="m" font-size="13">runs prompt A</text>
+  <text x="84" y="228" class="t" font-size="13.5">Writes state, not history.</text>
+  <text x="84" y="250" class="t" font-size="13.5">Tag what is uncertain.</text>
+  <text x="84" y="272" class="t" font-size="13.5">Capture rejected options.</text>
+  <rect x="84" y="288" width="282" height="30" class="soft"/>
+  <text x="98" y="308" class="m" font-size="12.5">≤1200 words · 9 sections</text>
+
+  <!-- pack artifact -->
+  <rect x="440" y="150" width="400" height="168" fill="#0f172a" rx="14"/>
+  <text x="464" y="184" class="t" font-size="16" font-weight="700" fill="#f8fafc">myproject-pack.md</text>
+  <text x="464" y="210" class="m" font-size="12.5" fill="#cbd5e1">frontmatter: confidence, updated…</text>
+  <text x="464" y="232" class="m" font-size="12.5" fill="#cbd5e1">2 · state   3 · decisions + rejected</text>
+  <text x="464" y="254" class="m" font-size="12.5" fill="#cbd5e1">4 · constraints   8 · next action</text>
+  <text x="464" y="284" class="m" font-size="12.5" fill="#fda4af">validated → git commit</text>
+  <text x="464" y="304" class="m" font-size="11.5" fill="#94a3b8">the only thing that crosses the gap</text>
+
+  <!-- lane 3: BOOT -->
+  <text x="890" y="122" class="lbl">2 · BOOT</text>
+  <rect x="890" y="136" width="330" height="196" class="card"/>
+  <text x="914" y="172" class="t" font-size="17" font-weight="700">New model</text>
+  <text x="914" y="198" class="m" font-size="13">runs prompt B</text>
+  <text x="914" y="228" class="t" font-size="13.5">Plays back ≤15 lines.</text>
+  <text x="914" y="250" class="t" font-size="13.5">Lists ≤3 gaps.</text>
+  <text x="914" y="272" class="t" font-size="13.5">Then — and only then — waits.</text>
+  <rect x="914" y="288" width="282" height="30" class="accent"/>
+  <text x="928" y="308" class="m" font-size="12.5" fill="#9f1239">playback = the integrity check</text>
+
+  <!-- arrows -->
+  <line x1="390" y1="234" x2="422" y2="234" stroke="#475569" stroke-width="2"/>
+  <polygon points="432,234 420,228 420,240" fill="#475569"/>
+  <line x1="840" y1="234" x2="872" y2="234" stroke="#475569" stroke-width="2"/>
+  <polygon points="882,234 870,228 870,240" fill="#475569"/>
+  <text x="411" y="222" text-anchor="middle" class="m" font-size="11">write</text>
+  <text x="861" y="222" text-anchor="middle" class="m" font-size="11">read</text>
+
+  <!-- bottom lane -->
+  <text x="60" y="400" class="lbl">3 · CHECKPOINT — every ~20 turns, and before every switch</text>
+  <rect x="60" y="414" width="1160" height="118" class="soft"/>
+  <rect x="86" y="440" width="250" height="66" fill="#fff" stroke="#e2e8f0" rx="10"/>
+  <text x="105" y="466" class="m" font-size="12.5">previous pack</text>
+  <text x="105" y="490" class="m" font-size="11.5" fill="#64748b">git show HEAD~1</text>
+
+  <rect x="366" y="440" width="250" height="66" fill="#fff" stroke="#e2e8f0" rx="10"/>
+  <text x="385" y="466" class="m" font-size="12.5">re-derive state</text>
+  <text x="385" y="490" class="m" font-size="11.5" fill="#64748b">changed sections only</text>
+
+  <rect x="646" y="440" width="250" height="66" fill="#fff" stroke="#e2e8f0" rx="10"/>
+  <text x="665" y="466" class="m" font-size="12.5">handoff.py diff</text>
+  <text x="665" y="490" class="m" font-size="11.5" fill="#64748b">what changed, per section</text>
+
+  <rect x="926" y="440" width="268" height="66" fill="#fff" stroke="#e2e8f0" rx="10"/>
+  <text x="945" y="466" class="m" font-size="12.5">commit + validate</text>
+  <text x="945" y="490" class="m" font-size="11.5" fill="#64748b">CI fails on a broken pack</text>
+
+  <line x1="336" y1="473" x2="348" y2="473" stroke="#475569" stroke-width="2"/>
+  <polygon points="356,473 346,468 346,478" fill="#475569"/>
+  <line x1="616" y1="473" x2="628" y2="473" stroke="#475569" stroke-width="2"/>
+  <polygon points="636,473 626,468 626,478" fill="#475569"/>
+  <line x1="896" y1="473" x2="908" y2="473" stroke="#475569" stroke-width="2"/>
+  <polygon points="916,473 906,468 906,478" fill="#475569"/>
+
+  <!-- feedback loop -->
+  <!-- thin rects, not lines: renderers are inconsistent about zero-height/zero-width strokes -->
+  <rect x="1059" y="392" width="2" height="22" fill="#fb7185"/>
+  <rect x="641" y="391" width="419" height="2" fill="#fb7185"/>
+  <rect x="639" y="366" width="2" height="26" fill="#fb7185"/>
+  <polygon points="640,352 633,366 647,366" fill="#fb7185"/>
+  <text x="1072" y="380" class="m" font-size="11.5" fill="#9f1239">loop back</text>
+
+  <text x="60" y="578" class="m" font-size="12" fill="#64748b">A fresh pack is cheap. A pack reconstructed from a 300-message chat always loses something — so checkpoint before you need it.</text>
+</svg>

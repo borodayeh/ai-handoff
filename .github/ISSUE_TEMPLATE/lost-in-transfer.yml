@@ -1,0 +1,31 @@
+name: Something got lost in a transfer
+description: The new model missed, forgot, or contradicted something after a handoff
+labels: ["transfer-loss"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks. Losses are the only data this project really cares about.
+        Please remove anything private before pasting a pack.
+  - type: textarea
+    id: what
+    attributes:
+      label: What got lost
+      description: One sentence. "It proposed LaTeX after I'd rejected it" beats "the handoff didn't work".
+    validations:
+      required: true
+  - type: textarea
+    id: pack-section
+    attributes:
+      label: Which pack section should have carried it
+      description: If none of the nine sections fits, say that, because it means the schema has a hole.
+  - type: input
+    id: models
+    attributes:
+      label: From which model to which
+      placeholder: Claude Opus to GPT-5, via pasted pack
+  - type: textarea
+    id: fix
+    attributes:
+      label: What you did to recover
+      description: Patching the pack, re-running boot, or nothing.
